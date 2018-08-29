@@ -24,5 +24,6 @@ Owens, party of 6
 
 Table C
 Garcia, party of 2
+
 Table D
 Reese, party of 7
