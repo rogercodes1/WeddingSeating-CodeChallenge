@@ -1,6 +1,6 @@
 class Guest
 
-  def initialize(guest_name, size)
+  def initialize(guest_name, size, dislike)
     @guest_name = guest_name
     @size = size
   end
