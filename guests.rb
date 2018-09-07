@@ -1,9 +1,27 @@
 class Guest
 
+  ALL = []
+
   def initialize(guest_name, size, dislike)
     @guest_name = guest_name
     @size = size
     @dislike = []
+    ALL << self
+  end
+
+
+  def self.all
+    ALL
+  end
+
+  def self.parse_guest_array(guests)
+    guests.each do |guest|
+      guest_data = guest.split(", ", 2)
+      party_size = guest_data[1].split('dislikes ')
+      dislike = guest_data[1].split('dislikes ')[1]
+      binding.pry
+    end
+
   end
 
 
