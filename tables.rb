@@ -1,7 +1,10 @@
 class Table
 
-  def initialize(argument)
-    @argument = argument
+  def initialize(name, size )
+    @name = name
+    @size = size
+    @current = nil
+    @available = nil
   end
 
 end
