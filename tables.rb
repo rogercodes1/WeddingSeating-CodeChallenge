@@ -1,12 +1,13 @@
 class Table
 
-  attr_accessor :name, :max_size, :guest_names,:seats_taken
+  attr_accessor :name, :max_size, :guest_names,:seats_taken, :party_name_size
   ALL = []
 
   def initialize(name, max_size,seats_taken = 0 )
     @name = name
     @max_size = max_size
     @guest_names = []
+    @party_name_size = []
     @seats_taken = seats_taken
     ALL << self
   end
@@ -25,7 +26,6 @@ class Table
   end
 
   def self.fill_tables
-    guests_present = []
     Table.all.map do |table|
       Guest.all.map do |guest|
         overload = table.seats_taken + guest.size
@@ -37,21 +37,21 @@ class Table
         elsif overload <= table_size && dislikes != nil
           dislikes.each do |person|
             if !table.guest_names.include?(person)
-              guests_present << "#{guest.name} party of #{guest.size}"
+              table.party_name_size << "#{guest.name} party of #{guest.size}"
               table.guest_names << guest.name
               table.seats_taken += guest.size
               guest.seated = true
-              binding.pry
+              # binding.pry
             end
           end
         elsif overload <= table_size && !table.guest_names.include?(guest.name)
-          guests_present << "#{guest.name} party of #{guest.size}"
+          table.party_name_size << "#{guest.name}, party of #{guest.size}"
           table.guest_names << guest.name
           table.seats_taken += guest.size
           guest.seated = true
-          binding.pry
+          # binding.pry
         end
-        binding.pry
+        # binding.pry
       end
     end
     Guest.all.each do |guest|
@@ -60,7 +60,11 @@ class Table
         break
       end
     end
-    guests_present.each {|present| puts present}
+    Table.all.each do |table|
+      puts "Table #{table.name}"
+      table.party_name_size.each {|intro| puts intro}
+
+    end
     puts "All haters seated"
   end
 
