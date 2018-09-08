@@ -24,7 +24,7 @@ class Guest
       # binding.pry
       Guest.new(name,size,dislike_arr)
     end
-    binding.pry
+    # binding.pry
   end
 
 
