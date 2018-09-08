@@ -28,10 +28,10 @@ class Table
   def self.fill_tables
     Table.all.map do |table|
       Guest.all.map do |guest|
+        # created variables to simplify comparison below.
         overload = table.seats_taken + guest.size
         dislikes = guest.dislikes
         table_size = table.max_size
-        # binding.pry
         if guest.seated
         elsif overload <= table_size && dislikes != nil
           dislikes.each do |person|
@@ -57,13 +57,11 @@ class Table
       end
     end
     Table.all.each do |table|
-      puts " "
-      puts "Table #{table.name}"
+      puts "\n Table #{table.name}"
       table.party_name_size.each {|intro| puts intro}
 
     end
-    puts " "
-    puts "All haters seated"
+    puts "\n All haters seated"
   end
 
 end
