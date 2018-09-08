@@ -1,12 +1,13 @@
 class Guest
 
-  attr_accessor :name, :size, :dislikes
+  attr_accessor :name, :size, :dislikes, :seated
   ALL = []
 
   def initialize(name, size, dislikes)
     @name = name
     @size = size
     @dislikes = dislikes
+    @seated = false
     ALL << self
   end
 
