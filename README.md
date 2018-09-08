@@ -24,4 +24,7 @@ On the command line
 
 # Notes
 
-* I made the assumption that
+* I made the assumption that there would be an input as provided by the first line `tables: A-8 B-8 C-7 D-7`.
+* I converted the input lines of guests `"Thornton, party of 3"` and the rest of the list into an array.
+
+* I am assuming that I am receiving all the inputs and then I turn it into an array.  
