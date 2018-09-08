@@ -50,18 +50,26 @@ class Table
         end
       end
     end
+
+
+  end
+
+  def self.does_everyone_fit?
+    seated = true
     Guest.all.each do |guest|
-      if !guest.seated
-        puts "Unable to seat all guests"
-        break
-      end
+      seated = false if !guest.seated
     end
+    seated ? Table.output_table : (puts "Unable to seat everyone.")
+
+  end
+
+  def self.output_table
     Table.all.each do |table|
       puts "\n Table #{table.name}"
       table.party_name_size.each {|intro| puts intro}
-
     end
     puts "\n All haters seated"
+
   end
 
 end

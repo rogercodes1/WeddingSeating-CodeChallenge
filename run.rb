@@ -15,7 +15,7 @@ guests = [
 Guest.guest_array(guests)
 
 Table.fill_tables
-
+Table.does_everyone_fit?
 # Example output:
 # Table A
 # Thornton, party of 3
