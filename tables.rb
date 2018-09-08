@@ -33,7 +33,6 @@ class Table
         table_size = table.max_size
         # binding.pry
         if guest.seated
-          puts 'Already seated'
         elsif overload <= table_size && dislikes != nil
           dislikes.each do |person|
             if !table.guest_names.include?(person)
@@ -61,10 +60,12 @@ class Table
       end
     end
     Table.all.each do |table|
+      puts " "
       puts "Table #{table.name}"
       table.party_name_size.each {|intro| puts intro}
 
     end
+    puts " "
     puts "All haters seated"
   end
 
