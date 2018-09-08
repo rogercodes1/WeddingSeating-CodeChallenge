@@ -40,7 +40,6 @@ class Table
               table.guest_names << guest.name
               table.seats_taken += guest.size
               guest.seated = true
-              # binding.pry
             end
           end
         elsif overload <= table_size && !table.guest_names.include?(guest.name)
@@ -48,9 +47,7 @@ class Table
           table.guest_names << guest.name
           table.seats_taken += guest.size
           guest.seated = true
-          # binding.pry
         end
-        # binding.pry
       end
     end
     Guest.all.each do |guest|

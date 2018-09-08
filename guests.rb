@@ -18,15 +18,13 @@ class Guest
 
   def self.parse_guest_array(guests)
     guests.each do |guest|
-      guest_data = guest.split(", ", 2)
-      name = guest_data[0]
-      size = guest_data[1].split('dislikes ')[0].gsub(/[^0-9]/,"").to_i
-      dislikes = guest_data[1].split('dislikes ')[1]
+      data = guest.split(", ", 2)
+      name = data[0]
+      size = data[1].split('dislikes ')[0].gsub(/[^0-9]/,"").to_i
+      dislikes = data[1].split('dislikes ')[1]
       dislikes_arr = dislikes.split(", ") if dislikes != nil
-      # binding.pry
       Guest.new(name,size,dislikes_arr)
     end
-    # binding.pry
   end
 
 
