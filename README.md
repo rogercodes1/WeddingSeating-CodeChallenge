@@ -7,5 +7,21 @@ You work for a wedding planner and are in charge of assigning seating for guests
 
 ## Built With
 
-* Ruby 
+* Ruby
 * OOP
+
+
+
+# How to Run program
+
+## Installation
+
+On the command line
+
+* gem install ruby
+* `ruby run.rb` will run file.
+
+
+# Notes
+
+* I made the assumption that
