@@ -19,7 +19,7 @@ class Table
     tables = str_input.split(":")[1].split(" ")
     tables.each do |table|
       name = table.split("-")[0]
-      max_size = table.split("-")[1]
+      max_size = table.split("-")[1].to_i
       Table.new(name, max_size, )
     end
   end
@@ -27,15 +27,28 @@ class Table
   def self.fill_tables
     Table.all.map do |table|
       Guest.all.each do |guest|
-        binding.pry
         overload = table.seats_taken + guest.size
-        if guest.dislike == nil && overload <= table.seats_taken
+        dislikes = guest.dislikes
+        table_size = table.max_size
+        puts 'before ************************************************'
+        if dislikes == nil && overload <= table_size && !table.guest_names.include?(guest.name)
           table.guest_names << guest.name
           table.seats_taken += guest.size
-          binding.pry
-        else
+          puts "if **********************************************"
+        elsif overload <= table_size && dislikes.size >=1
+          dislikes.each do |person|
+            binding.pry
+            if !table.guest_names.include?(person)
+              table.guest_names << guest.name
+              table.seats_taken += guest.size
+              puts "elsif if ***************************************"
+              binding.pry
+            end
 
+          end
         end
+        puts table.to_s
+        binding.pry
       end
     end
   end
