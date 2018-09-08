@@ -16,14 +16,14 @@ class Guest
     ALL
   end
 
-  def self.parse_guest_array(guests)
+  def self.guest_array(guests)
     guests.each do |guest|
       data = guest.split(", ", 2)
       name = data[0]
       size = data[1].split('dislikes ')[0].gsub(/[^0-9]/,"").to_i
       dislikes = data[1].split('dislikes ')[1]
-      dislikes_arr = dislikes.split(", ") if dislikes != nil
-      Guest.new(name,size,dislikes_arr)
+      dis_arr = dislikes.split(", ") if dislikes != nil
+      Guest.new(name,size, dis_arr)
     end
   end
 

@@ -12,7 +12,7 @@ guests = [
   "Smith, party of 1 dislikes Garcia",
   "Taylor, party of 5",
   "Reese, party of 7"]
-Guest.parse_guest_array(guests)
+Guest.guest_array(guests)
 
 Table.fill_tables
 
