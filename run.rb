@@ -15,3 +15,15 @@ guests = [
 Guest.parse_guest_array(guests)
 
 Table.fill_tables
+
+# Example output:
+# Table A
+# Thornton, party of 3
+# Taylor, party of 5
+# Table B
+# Smith, party of 1
+# Owens, party of 6
+# Table C
+# Garcia, party of 2
+# Table D
+# Reese, party of 7

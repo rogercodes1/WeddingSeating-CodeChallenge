@@ -25,6 +25,7 @@ class Table
   end
 
   def self.fill_tables
+    guests_present = []
     Table.all.map do |table|
       Guest.all.map do |guest|
         overload = table.seats_taken + guest.size
@@ -32,23 +33,25 @@ class Table
         table_size = table.max_size
         # binding.pry
         if guest.seated
-          puts 'awesome'
+          puts 'Already seated'
         elsif overload <= table_size && dislikes != nil
           dislikes.each do |person|
             if !table.guest_names.include?(person)
+              guests_present << "#{guest.name} party of #{guest.size}"
               table.guest_names << guest.name
               table.seats_taken += guest.size
               guest.seated = true
+              binding.pry
             end
           end
         elsif overload <= table_size && !table.guest_names.include?(guest.name)
+          guests_present << "#{guest.name} party of #{guest.size}"
           table.guest_names << guest.name
           table.seats_taken += guest.size
           guest.seated = true
-          # binding.pry
-
+          binding.pry
         end
-
+        binding.pry
       end
     end
     Guest.all.each do |guest|
@@ -57,6 +60,7 @@ class Table
         break
       end
     end
+    guests_present.each {|present| puts present}
     puts "All haters seated"
   end
 
