@@ -5,7 +5,7 @@ class Guest
   def initialize(guest_name, size, dislike)
     @guest_name = guest_name
     @size = size
-    @dislike = nil
+    @dislike = dislike
     ALL << self
   end
 
