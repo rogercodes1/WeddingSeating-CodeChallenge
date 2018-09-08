@@ -35,13 +35,10 @@ class Table
           puts 'awesome'
         elsif overload <= table_size && dislikes != nil
           dislikes.each do |person|
-            # binding.pry
             if !table.guest_names.include?(person)
               table.guest_names << guest.name
               table.seats_taken += guest.size
               guest.seated = true
-              puts "elsif if ***************************************"
-              # binding.pry
             end
           end
         elsif overload <= table_size && !table.guest_names.include?(guest.name)
@@ -54,11 +51,11 @@ class Table
 
       end
     end
-    binding.pry
     Guest.all.each do |guest|
       if !guest.seated
         puts "Unable to seat all guests"
         break
+      end
     end
     puts "All haters seated"
   end
